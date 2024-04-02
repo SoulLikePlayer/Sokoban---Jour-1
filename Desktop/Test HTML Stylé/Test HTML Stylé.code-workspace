@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Test HTML Stylé",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502
+	}
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple Tailwind CSS</title>
+
+  <!-- Liens CDN de Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/base.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/components.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/utilities.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+  <div class="container mx-auto p-4">
+    <!-- En-tête -->
+    <header class="text-center">
+      <h1 class="text-4xl font-bold text-indigo-700 mb-2">Tailwind CSS Example</h1>
+      <p class="text-gray-600">Un exemple simple illustrant les fonctionnalités de Tailwind CSS.</p>
+    </header>
+
+    <!-- Section de contenu -->
+    <section class="my-8">
+      <!-- Bouton -->
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Cliquez-moi</button>
+
+      <!-- Grille de cartes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <!-- Carte 1 -->
+        <div class="bg-white p-4 rounded shadow-md">
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">Article 1</h2>
+          <p class="text-gray-600">Description de l'article 1.</p>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="bg-white p-4 rounded shadow-md">
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">Article 2</h2>
+          <p class="text-gray-600">Description de l'article 2.</p>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="bg-white p-4 rounded shadow-md">
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">Article 3</h2>
+          <p class="text-gray-600">Description de l'article 3.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="text-center text-gray-500 mt-8">
+      <p>&copy; 2024 Tailwind CSS Example. Tous droits réservés.</p>
+    </footer>
+  </div>
+
+</body>
+</html>

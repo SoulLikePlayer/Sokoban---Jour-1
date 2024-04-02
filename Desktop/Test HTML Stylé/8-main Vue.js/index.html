@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Example</title>
+
+  <!-- Vue.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+
+  <div id="app">
+    <!-- Utilisation de données -->
+    <h1>{{ message }}</h1>
+
+    <!-- Binding d'attributs -->
+    <input v-model="inputValue" placeholder="Saisissez du texte" />
+    <p>{{ inputValue }}</p>
+
+    <!-- Utilisation de directives -->
+    <p v-if="showMessage">Ce message est visible.</p>
+    <button @click="toggleMessage">Basculer le message</button>
+
+    <!-- Utilisation de méthodes -->
+    <button @click="alertMessage">Afficher une alerte</button>
+
+    <!-- Utilisation de boucles -->
+    <ul>
+      <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+    </ul>
+
+    <!-- Utilisation de composants -->
+    <my-component :prop1="computedProp" @customEvent="handleCustomEvent"></my-component>
+  </div>
+
+  <!-- Définition d'un composant Vue -->
+  <script type="text/x-template" id="my-component-template">
+    <div>
+      <h2>Composant Vue</h2>
+      <p>{{ prop1 }}</p>
+      <button @click="triggerCustomEvent">Déclencher un événement</button>
+    </div>
+  </script>
+
+  <script>
+    // Définir un composant Vue
+    Vue.component('my-component', {
+      template: '#my-component-template',
+      props: ['prop1'],
+      methods: {
+        triggerCustomEvent() {
+          this.$emit('customEvent', 'Données émises depuis le composant');
+        }
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Bienvenue dans mon application Vue.js!',
+        inputValue: '',
+        showMessage: true,
+        items: [
+          { id: 1, name: 'Article 1' },
+          { id: 2, name: 'Article 2' },
+          { id: 3, name: 'Article 3' }
+        ],
+      },
+      computed: {
+        computedProp() {
+          return 'Propriété calculée';
+        }
+      },
+      methods: {
+        toggleMessage() {
+          this.showMessage = !this.showMessage;
+        },
+        alertMessage() {
+          alert('Message alerte!');
+        },
+        handleCustomEvent(data) {
+          alert(`Événement personnalisé reçu avec les données: ${data}`);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

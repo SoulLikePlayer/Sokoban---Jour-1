@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Example</title>
+
+  <!-- React CDN -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Babel CDN pour JSX (en mode développement) -->
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Composant React
+    class App extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          message: 'Bienvenue dans mon application React!',
+          inputValue: '',
+          showMessage: true,
+          items: [
+            { id: 1, name: 'Article 1' },
+            { id: 2, name: 'Article 2' },
+            { id: 3, name: 'Article 3' }
+          ]
+        };
+      }
+
+      toggleMessage = () => {
+        this.setState({ showMessage: !this.state.showMessage });
+      };
+
+      alertMessage = () => {
+        alert('Message alerte!');
+      };
+
+      render() {
+        return (
+          <div>
+            {/* Utilisation de données */}
+            <h1>{this.state.message}</h1>
+
+            {/* Binding d'attributs */}
+            <input
+              value={this.state.inputValue}
+              placeholder="Saisissez du texte"
+              onChange={(e) => this.setState({ inputValue: e.target.value })}
+            />
+            <p>{this.state.inputValue}</p>
+
+            {/* Utilisation de conditions */}
+            {this.state.showMessage && <p>Ce message est visible.</p>}
+            <button onClick={this.toggleMessage}>Basculer le message</button>
+
+            {/* Utilisation d'événements */}
+            <button onClick={this.alertMessage}>Afficher une alerte</button>
+
+            {/* Utilisation de boucles */}
+            <ul>
+              {this.state.items.map(item => (
+                <li key={item.id}>{item.name}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+    }
+
+    // Rendre le composant React dans le DOM
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
