@@ -1,5 +1,5 @@
 public abstract class Movable extends GameElement{
-    protected boolean immutable;
+    private boolean immutable;
 
     public abstract void Movable(int col, int lig , boolean immutable);
 
