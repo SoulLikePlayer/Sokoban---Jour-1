@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CrateTest {
     Crate crate1 = new Crate(5, 6);
     @Test
-    assertEquals(GameElement.get, nul);
+
 
 
 
