@@ -1,4 +1,8 @@
-public abstract class Movable extends GameElement{
+package SAE.module;
+
+import SAE.module.GameElement;
+
+public abstract class Movable extends GameElement {
     private boolean immutable;
 
     public Movable(int col, int lig , boolean immutable){

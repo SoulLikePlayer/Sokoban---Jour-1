@@ -1,3 +1,5 @@
+package SAE.module;
+
 public class Point {
     final int col;
     final int lig;
@@ -9,13 +11,13 @@ public class Point {
 
     @Override
     public boolean equals(Object obj) {
-        // Vérifie si l'objet est une instance de Point
+        // Vérifie si l'objet est une instance de SAE.module.Point
         if (this == obj)
             return true;
         if (obj == null || getClass() != obj.getClass())
             return false;
 
-        // Cast de l'objet en Point
+        // Cast de l'objet en SAE.module.Point
         Point other = (Point) obj;
 
         // Compare les attributs col et lig

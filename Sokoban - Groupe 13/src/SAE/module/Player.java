@@ -1,5 +1,8 @@
+package SAE.module;
 
-public class Player extends Movable { 
+import SAE.module.Movable;
+
+public class Player extends Movable {
 	public Player(int col, int lig) {
 		super(col,lig);
 	}

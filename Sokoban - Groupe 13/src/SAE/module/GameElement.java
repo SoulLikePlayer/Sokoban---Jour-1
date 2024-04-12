@@ -1,3 +1,5 @@
+package SAE.module;
+
 import java.util.Objects;
 
 public abstract class GameElement {

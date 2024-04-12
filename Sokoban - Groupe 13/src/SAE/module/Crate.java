@@ -1,3 +1,4 @@
+package SAE.module;
 
 public class Crate extends Movable {
 	public Crate(int col, int lig) {

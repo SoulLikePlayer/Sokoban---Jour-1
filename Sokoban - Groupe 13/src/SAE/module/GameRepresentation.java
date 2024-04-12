@@ -1,3 +1,5 @@
+package SAE.module;
+
 public enum GameRepresentation {
 
     PLAYER('@'),
