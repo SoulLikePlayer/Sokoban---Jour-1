@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 2ecc600a1729be39b3ae34ee24976219e9ba9d00
 
 public class PlayerTest {
 

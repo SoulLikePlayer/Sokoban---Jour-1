@@ -19,11 +19,19 @@ public class Level {
     private final int nbLines;
     private final int nbColumns;
 
-    public Level(Player player, Point playerOrigin, Collection<Crate> crates, Collection<Point> crateOrigins, Collection<Goal> goals, GameRepresentation[][] field) {
+    public Level(Player player, Collection<Crate> crates, Collection<Goal> goals, GameRepresentation[][] field) {
         this.player = player;
-        this.playerOrigin = playerOrigin;
+        this.playerOrigin = player.position;
         this.crates = new ArrayList<>(crates);
-        this.crateOrigins = new ArrayList<>(crateOrigins);
+        this.crateOrigins = new ArrayList<>();
+        for (int i = 0 ; i < field.length ; i++){
+            for (int j = 0 ; i <field[0].length; i++){
+                if (field[i][j]==GameRepresentation.CRATE){
+                    crateOrigins.add(new Point(i,j));
+                }
+            }
+        }
+
         this.goals = new ArrayList<>(goals);
         this.field = field;
         this.nbLines = field.length;
