@@ -10,6 +10,7 @@ public class Crate extends Movable {
 
 	@Override
 	public void moveTo(int col, int lig) {
+
 		position = new Point(col, lig);
 	}
 
