@@ -95,12 +95,28 @@ public class Level {
             }
             // Si le joueur peut bouger et il n'y a pas de caisse à déplacer
             if (bouge) {
-                field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
+                // Si la nouvelle position est une case GOAL
+                if (field[newRow][newCol] == GameRepresentation.GOAL) {
+                    // Modifie le GameElement de la case GOAL en PLAYER_ON_GOAL
+                    field[newRow][newCol] = GameRepresentation.PLAYER_ON_GOAL;
+                } else {
+                    field[newRow][newCol] = GameRepresentation.PLAYER;
+                    // Restaure la case GOAL à sa valeur d'origine si elle a été modifiée en PLAYER_ON_GOAL
+                }
+                // Déplace le joueur
+                if (field[player.getLig()][player.getCol()] == GameRepresentation.PLAYER_ON_GOAL) {
+                    field[player.getLig()][player.getCol()] = GameRepresentation.GOAL;
+                }
+                else{
+                    field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
+                }
                 player.moveTo(newCol, newRow);
-                field[newRow][newCol] = GameRepresentation.PLAYER;
             }
         }
     }
+
+
+
 
 
 
