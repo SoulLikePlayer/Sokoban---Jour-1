@@ -68,39 +68,34 @@ public class Level {
                 break;
         }
 
-        /**
-         * Check if the move is legal
-         */
-
         if (isValidMove(newCol, newRow)) {
-            boolean bouge = true ;
-            /**
-             * Check if there's a box placed on the new position of the person, if this is the case, the box is moved
-             */
+            boolean bouge = true;
 
             for (Crate crate : crates) {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
-                    bouge = false ;
+                    bouge = false;
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow + (crate.getLig() + (newRow - player.getLig()) )][crateNewCol + (crate.getCol() + (newCol - player.getCol()))] != GameRepresentation.CRATE ) {
-                        field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY ;
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
+                        field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY;
                         crate.moveTo(crateNewCol, crateNewRow);
-                        field[crateNewCol][ crateNewRow]= GameRepresentation.CRATE ;
-                        field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
+                        field[crateNewRow][crateNewCol] = GameRepresentation.CRATE;
+                        field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
                         player.moveTo(newCol, newRow);
-                        field[newCol][newRow] = GameRepresentation.PLAYER ;
+                        field[newRow][newCol] = GameRepresentation.PLAYER;
                     }
                     break; // Only a single box can be moved at once
                 }
             }
-            if(bouge = true){
-                field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
+            if (bouge) {
+                field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
                 player.moveTo(newCol, newRow);
-                field[newCol][newRow] = GameRepresentation.PLAYER ;
+                field[newRow][newCol] = GameRepresentation.PLAYER;
             }
         }
     }
+
+
 
 
     /**
