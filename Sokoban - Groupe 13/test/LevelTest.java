@@ -41,10 +41,13 @@ public class LevelTest {
         assertEquals(l.getNbLines(),7);
         assertEquals(l.getRepr(4,6), PLAYER);
         assertEquals(l.getRepr(2,6), CRATE);
+    }
+
+    @Test
+    public void Constructor1(){
 
 
     }
-
     @Test
     public void TestMove(){
         GameRepresentation[][] expectedField = {

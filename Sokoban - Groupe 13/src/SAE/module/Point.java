@@ -15,7 +15,7 @@ public class Point {
         this.lig = lig;
     }
 
-  
+
 
     @Override
     public boolean equals(Object obj) {
