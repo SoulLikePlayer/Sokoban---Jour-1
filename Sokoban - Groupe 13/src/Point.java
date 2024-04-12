@@ -1,13 +1,9 @@
 public class Point {
-<<<<<<< HEAD
+
 
         final int col;
      final int lig;
 
-=======
->>>>>>> 7110da71117c123c7bb417b9f529ccd91c46c05b
-    final int col;
-    final int lig;
 
     public Point(int col, int lig) {
         this.col = col;
