@@ -1,6 +1,6 @@
 public enum GameRepresentation {
 
-    PLAYER("@"),
+    PLAYER('@'),
     WALL('#'),
     TARGET('.'),
     BOX('$'),
@@ -9,4 +9,7 @@ public enum GameRepresentation {
     EMPTY(' '),
     EMPTY_EXTERIOR('X');
 
+    GameRepresentation(char character){
+        this.character = character;
+    }
 }
