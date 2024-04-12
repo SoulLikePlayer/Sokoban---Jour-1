@@ -20,7 +20,7 @@ public class PlayerTest {
         assertEquals(p1.getCol() , 1);
         assertEquals(p1.getLig(), 2);
         assertFalse(p1.getLig()==7);
-        assertEquals(p1.getImmutable, false);
+        assertEquals(p1.getImmutable(), false);
 
 
         Point pt = new Point(1,2);
@@ -28,8 +28,8 @@ public class PlayerTest {
         assertEquals(p2.getCol() , 1);
         assertEquals(p2.getLig(), 2);
         assertFalse(p2.getLig()==7);
-        assertEquals(p1.getImmutable, false);
+        assertEquals(p1.getImmutable(), false);
 
     }
-    }
+
 }
