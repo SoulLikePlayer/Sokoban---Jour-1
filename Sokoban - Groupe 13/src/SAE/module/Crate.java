@@ -12,10 +12,6 @@ public class Crate extends Movable {
 
 	@Override
 	public void moveTo(Point p) {
-
-
-
-
 		position = p ;
 	}
 

@@ -58,7 +58,6 @@ public class Level {
          * Check if the move is legal
          */
         if (isValidMove(newCol, newRow)) {
-            player.moveTo(newCol, newRow);
 
             /**
              * Check if there's a box placed on the new position of the person, if this is the case, the box is moved
@@ -68,8 +67,9 @@ public class Level {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow)) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
                         crate.moveTo(crateNewCol, crateNewRow);
+                        player.moveTo(newCol, newRow);
                     }
                     break; // Only a single box can be moved at once
                 }
@@ -85,7 +85,7 @@ public class Level {
      * @return The method returns 'true' if the move is legal, 'false' if not
      */
     private boolean isValidMove(int col, int row) {
-        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL;
+        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL ;
     }
 
     /**

@@ -14,13 +14,33 @@ public enum GameRepresentation {
     EMPTY(' '),
     MAZE_OUTSIDE('X');
 
-    private final char character;
+    public final char character;
 
     /**
      * @param character The symbol that represents the value of the enumeration
      * The function returns the value of the corresponding Sakoban character
      */
     GameRepresentation(char character){
+
         this.character = character;
+    }
+
+    public static GameRepresentation fromCharachter(char c){
+        if ( c == '@'){
+            return PLAYER;
+        }if( c == '#'){
+            return WALL;
+        }if (c == '.'){
+            return GOAL;
+        }if (c == '$'){
+            return CRATE;
+        }if (c == '+'){
+            return PLAYER_ON_GOAL;
+        }if (c == '*'){
+            return CRATE_ON_GOAL;
+        }if (c == 'X'){
+            return MAZE_OUTSIDE;
+        }
+        return EMPTY;
     }
 }
