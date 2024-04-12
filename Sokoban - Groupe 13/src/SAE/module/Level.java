@@ -43,7 +43,7 @@ public class Level {
      * @param dir The direction of the movement
      * The method move the person towards the direction wanted
      */
-    public void move(Direction dir) {
+    public void move(Direction dir) throws IllegalAccessException {
         int newCol = player.getCol();
         int newRow = player.getLig();
 
