@@ -15,4 +15,14 @@ public class Goal extends GameElement {
     public Goal(Point p) {
         super(p);
     }
+
+    @Override
+    public int getCol() {
+        return super.getCol();
+    }
+
+    @Override
+    public int getLig() {
+        return super.getLig();
+    }
 }
