@@ -1,8 +1,11 @@
 public class Point {
+<<<<<<< HEAD
 
         final int col;
      final int lig;
 
+=======
+>>>>>>> 7110da71117c123c7bb417b9f529ccd91c46c05b
     final int col;
     final int lig;
 
@@ -25,5 +28,4 @@ public class Point {
         // Compare les attributs col et lig
         return col == other.col && lig == other.lig;
     }
-
 }
