@@ -104,7 +104,7 @@ public class Level {
      * @param row The row/line where the person will be moved
      * @return The method returns 'true' if the move is legal, 'false' if not
      */
-    private boolean isValidMove(int col, int row) {
+    public boolean isValidMove(int col, int row) {
         return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != WALL ;
 
     }
