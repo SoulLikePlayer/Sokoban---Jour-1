@@ -65,7 +65,40 @@ public class LevelTest {
 
         assertEquals(l.getNbColumns(), 9);
         assertEquals(l.getNbLines(),7);
-        assertEquals(l.isValidMove(1,3,);
+        assertEquals(l.isValidMove(0,3),false);
+
+    }
+
+    @Test
+    public void Constructor2(){
+        Player p = new Player(1 , 3,false);
+
+        ArrayList<Crate> crates = new ArrayList<Crate>();
+        Crate c = new Crate( 3 , 4);
+        crates.add(c);
+
+
+        ArrayList<Goal> goals = new ArrayList<Goal>();
+        goals.add(new Goal(new Point(0,3)));
+
+        GameRepresentation[][] expectedField = {
+                {EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, EMPTY, EMPTY},
+                {WALL,WALL,WALL,EMPTY,EMPTY,WALL,WALL,WALL,WALL},
+                {WALL,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,CRATE,EMPTY,WALL},
+                {WALL,EMPTY,WALL,EMPTY,EMPTY,WALL,CRATE,EMPTY,WALL},
+                {WALL, EMPTY, GOAL, EMPTY, GOAL, WALL, PLAYER, EMPTY,WALL},
+                {WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL,WALL},
+                {EMPTY, EMPTY, EMPTY, WALL,WALL, EMPTY,EMPTY,EMPTY,EMPTY}
+        };
+
+        Level l = new Level(p,crates,goals,expectedField);
+
+        assertEquals(l.getNbColumns(), 9);
+        assertEquals(l.getNbLines(),7);
+        assertEquals(l.isValidMove(0,3),false);
+        for(int i = 0; i < GameRepresentation.le)
+
+        l.move(Direction.RIGHT);
 
     }
 
