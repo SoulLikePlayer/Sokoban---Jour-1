@@ -1,5 +1,8 @@
 package SAE.module;
 
+/**
+ * The class Point create an object with column and line coordinates
+ */
 public class Point {
 
 
@@ -11,6 +14,12 @@ public class Point {
         this.col = col;
         this.lig = lig;
     }
+
+    /**
+     *
+     * @param obj
+     * @return Return the object if it is equal to
+     */
 
     @Override
     public boolean equals(Object obj) {

@@ -3,8 +3,7 @@ import SAE.module.Point;
 import SAE.module.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
 
@@ -31,5 +30,6 @@ public class PlayerTest {
         assertEquals(p1.getImmutable(), false);
 
     }
+
 
 }
