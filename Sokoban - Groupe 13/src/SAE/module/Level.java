@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Collection;
 
+
 public class Level {
 
     private final GameRepresentation[][] field;
@@ -113,6 +114,16 @@ public class Level {
         return field[row][col];
     }
 
+    // Renvoie le nombre de colonnes du niveau
+    public int getNbColumns() {
+        return nbColumns;
+    }
+
+    // Renvoie le nombre de lignes du niveau
+    public int getNbLines() {
+        return nbLines;
+    }
+
     // Renvoie une liste non modifiable des caisses
     public List<Crate> getCrates() {
         return Collections.unmodifiableList(crates);
@@ -134,7 +145,9 @@ public class Level {
     }
 
     // Vérifie si une case aux coordonnées spécifiées est occupée par une caisse
-    private boolean crateCanAccess(int col, int row) {
+    private boolean crateCanAccess(int col, int row)
+
+    {
         for (Crate crate : crates) {
             if (crate.getCol() == col && crate.getLig() == row) {
                 return true;
