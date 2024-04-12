@@ -86,14 +86,14 @@ public class LevelTest {
                 {WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL}
         };
-<<<<<<< HEAD
+
     }
 
 
 
         
     }
-=======
+
     }
     @Test
     public void Constructor2() throws IllegalAccessException {
@@ -129,4 +129,4 @@ public class LevelTest {
     }
 }
 */
->>>>>>> 57a9a27f5c3b6a943da52e66d62f89c4fa5a9e39
+

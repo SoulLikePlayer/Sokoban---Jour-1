@@ -8,11 +8,13 @@ import java.util.Scanner;
 
 public class Game {
     public void run() {
-        String filePath = "C:\\Users\\Louis\\Desktop\\SAE2.03\\sae-2-03-final\\Sokoban - Groupe 13\\levels\\levels\\niveau01.xsb";
+
         View view = new View();
+        System.out.printf("rentrez le nom de votre fichier : ");
         Scanner scanner = new Scanner(System.in);
+        String filePath = scanner.next();
         // Read of the level from the file
-        try (InputStream inputStream = new FileInputStream(filePath)) {
+        try (InputStream inputStream = new FileInputStream("Sokoban - Groupe 13/resources/levels/"+filePath)) {
             Level level = LevelIO.readLevel(inputStream);
             while (!level.over()) {
                 view.levelToGridStr(level);
