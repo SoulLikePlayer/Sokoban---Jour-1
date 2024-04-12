@@ -1,6 +1,7 @@
 package SAE.module;
 
 import SAE.exception.FileFormatException;
+import SAE.view.View;
 
 import java.io.*;
 
@@ -12,15 +13,11 @@ public class Main {
         // Lecture du niveau depuis le fichier
         try (InputStream inputStream = new FileInputStream(filePath)) {
             Level level = LevelIO.readLevel(inputStream);
+            View view = new View();
 
             // Affichage du niveau
             System.out.println("Level read from file:");
-            for (int row = 0; row < level.getNbLines(); row++) {
-                for (int col = 0; col < level.getNbColumns(); col++) {
-                    System.out.print(level.getRepr(row, col));
-                }
-                System.out.println();
-            }
+            view.levelToGridStr(level);
 
             // Sauvegarde du niveau dans un nouveau fichier
             LevelIO.saveLevel(level, new File("new_level.txt"));
