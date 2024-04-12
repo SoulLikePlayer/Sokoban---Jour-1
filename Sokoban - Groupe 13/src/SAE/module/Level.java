@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Collection;
 
+import static SAE.module.GameRepresentation.WALL;
+
 /**
  * The class Level enables the game to run properly
  */
@@ -25,7 +27,7 @@ public class Level {
         this.crates = new ArrayList<>(crates);
         this.crateOrigins = new ArrayList<>();
         for (int i = 0 ; i < field.length ; i++){
-            for (int j = 0 ; i <field[0].length; i++){
+            for (int j = 0 ; j <field[0].length; j++){
                 if (field[i][j]==GameRepresentation.CRATE){
                     crateOrigins.add(new Point(i,j));
                 }
@@ -75,7 +77,7 @@ public class Level {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE ) {
                         crate.moveTo(crateNewCol, crateNewRow);
                         player.moveTo(newCol, newRow);
                     }
@@ -93,7 +95,7 @@ public class Level {
      * @return The method returns 'true' if the move is legal, 'false' if not
      */
     private boolean isValidMove(int col, int row) {
-        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL ;
+        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != WALL ;
     }
 
     /**
@@ -121,19 +123,18 @@ public class Level {
 
     // Check if all of the crates are on their final positions
     public boolean over() {
+        int compt = 0;
         for (Crate crate : crates) {
-            boolean crateOnGoal = false;
+
             for (Goal goal : goals) {
                 if (goal.getCol() == crate.getCol() && goal.getLig() == crate.getLig()) {
-                    crateOnGoal = true;
-                    break;
+                    compt ++ ;
                 }
+
             }
-            if (!crateOnGoal) {
-                return false;
-            }
+
         }
-        return true;
+        return compt == goals.size();
     }
 
     /**
@@ -186,6 +187,7 @@ public class Level {
      * @return Return if the case specified is already taken by a player
      */
     private boolean playerCanAccess(int col, int row) {
+
         return player.getCol() == col && player.getLig() == row;
     }
 
