@@ -7,6 +7,7 @@ public class Player extends Movable {
 		super(col,lig);
 	}
 
+
 	public Player(int col, int lig , boolean b) {
 		super(col,lig,b);
 	}

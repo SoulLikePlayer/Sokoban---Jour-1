@@ -22,9 +22,8 @@ public abstract class Movable extends GameElement {
 
     public abstract void moveTo(int col , int lig);
 
-    public void moveTo(Point p){
 
-
-        
-    }
+=======
+    public abstract void moveTo(Point p);
+>>>>>>> ee32d40d902f00bce4e1ecee348b4e55adb0f5d4
 }
