@@ -1,11 +1,10 @@
 public class Point {
-<<<<<<< HEAD
+
         final int col;
      final int lig;
-=======
+
     final int col;
     final int lig;
->>>>>>> 3d54f92475470e46a6a5b2d84c37a5786da5da53
 
     public Point(int col, int lig) {
         this.col = col;
