@@ -2,6 +2,9 @@ package SAE.module;
 
 import SAE.module.GameElement;
 
+/**
+ * This class store the position of the goals
+ */
 public class Goal extends GameElement {
     /**
      *

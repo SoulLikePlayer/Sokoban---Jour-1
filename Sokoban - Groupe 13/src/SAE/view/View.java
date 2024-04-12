@@ -2,6 +2,9 @@ package SAE.view;
 
 import SAE.module.Level;
 
+/**
+ * Display the game
+ */
 public class View {
     public void levelToStr(Level l){
         for (int row = 0; row < l.getNbLines(); row++) {
