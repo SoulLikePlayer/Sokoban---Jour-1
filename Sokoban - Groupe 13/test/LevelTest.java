@@ -35,7 +35,7 @@ public class LevelTest {
 
         assertEquals(l.getNbColumns(), 9);
         assertEquals(l.getNbLines(),7);
-        assertEquals(l.getRepr(2,2), PLAYER);
+        assertEquals(l.getRepr(4,6), PLAYER);
         assertEquals(l.getRepr(2,6), CRATE);
 
 

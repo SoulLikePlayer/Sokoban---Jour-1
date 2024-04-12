@@ -25,7 +25,7 @@ public class Level {
         this.crates = new ArrayList<>(crates);
         this.crateOrigins = new ArrayList<>();
         for (int i = 0 ; i < field.length ; i++){
-            for (int j = 0 ; i <field[0].length; i++){
+            for (int j = 0 ; j <field[0].length; j++){
                 if (field[i][j]==GameRepresentation.CRATE){
                     crateOrigins.add(new Point(i,j));
                 }
