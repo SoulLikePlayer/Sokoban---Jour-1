@@ -65,22 +65,33 @@ public class Level {
         /**
          * Check if the move is legal
          */
-        if (isValidMove(newCol, newRow)) {
 
+        if (isValidMove(newCol, newRow)) {
+            boolean bouge = true ;
             /**
              * Check if there's a box placed on the new position of the person, if this is the case, the box is moved
              */
 
             for (Crate crate : crates) {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
+                    bouge = false ;
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE ) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow + (crate.getLig() + (newRow - player.getLig()) )][crateNewCol + (crate.getCol() + (newCol - player.getCol()))] != GameRepresentation.CRATE ) {
+                        field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY ;
                         crate.moveTo(crateNewCol, crateNewRow);
+                        field[crateNewCol][ crateNewRow]= GameRepresentation.CRATE ;
+                        field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
                         player.moveTo(newCol, newRow);
+                        field[newCol][newRow] = GameRepresentation.PLAYER ;
                     }
                     break; // Only a single box can be moved at once
                 }
+            }
+            if(bouge = true){
+                field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
+                player.moveTo(newCol, newRow);
+                field[newCol][newRow] = GameRepresentation.PLAYER ;
             }
         }
     }
@@ -157,7 +168,8 @@ public class Level {
 
     // Return a non-modifiable list of the crates
     public List<Crate> getCrates() {
-        return Collections.unmodifiableList(crates);
+        List list = Collections.unmodifiableList(crates);
+        return list;
     }
 
     /**
