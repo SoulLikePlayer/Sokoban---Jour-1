@@ -9,8 +9,7 @@ class PointTest {
     @Test
     public void constructorTest(){
         Point p = new Point( 4 , 5 );
-        assertEquals(p.col,  4);
-        a ,  5);
         assertEquals(p , new Point(4 , 5));
+
     }
 }
