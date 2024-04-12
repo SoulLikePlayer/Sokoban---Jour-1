@@ -68,15 +68,21 @@ public class Level {
                 break;
         }
 
+        // Vérifie si le mouvement est valide
         if (isValidMove(newCol, newRow)) {
             boolean bouge = true;
 
+            // Parcourt toutes les caisses pour voir si elles doivent être déplacées
             for (Crate crate : crates) {
+                // Vérifie si une caisse est à la position de destination
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     bouge = false;
+                    // Calcule les nouvelles positions pour la caisse
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
+                    // Vérifie si la nouvelle position de la caisse est valide et libre
                     if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
+                        // Déplace la caisse et le joueur
                         field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY;
                         crate.moveTo(crateNewCol, crateNewRow);
                         field[crateNewRow][crateNewCol] = GameRepresentation.CRATE;
@@ -84,9 +90,10 @@ public class Level {
                         player.moveTo(newCol, newRow);
                         field[newRow][newCol] = GameRepresentation.PLAYER;
                     }
-                    break; // Only a single crate can be moved at once
+                    break; // Seule une seule caisse peut être déplacée à la fois
                 }
             }
+            // Si le joueur peut bouger et il n'y a pas de caisse à déplacer
             if (bouge) {
                 field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
                 player.moveTo(newCol, newRow);
@@ -94,6 +101,7 @@ public class Level {
             }
         }
     }
+
 
 
 
