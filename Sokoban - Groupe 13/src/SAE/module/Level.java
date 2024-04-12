@@ -75,7 +75,7 @@ public class Level {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE ) {
                         crate.moveTo(crateNewCol, crateNewRow);
                         player.moveTo(newCol, newRow);
                     }
@@ -121,19 +121,18 @@ public class Level {
 
     // Check if all of the crates are on their final positions
     public boolean over() {
+        int compt = 0;
         for (Crate crate : crates) {
-            boolean crateOnGoal = false;
+
             for (Goal goal : goals) {
                 if (goal.getCol() == crate.getCol() && goal.getLig() == crate.getLig()) {
-                    crateOnGoal = true;
-                    break;
+                    compt ++ ;
                 }
+
             }
-            if (!crateOnGoal) {
-                return false;
-            }
+
         }
-        return true;
+        return compt == goals.size();
     }
 
     /**
