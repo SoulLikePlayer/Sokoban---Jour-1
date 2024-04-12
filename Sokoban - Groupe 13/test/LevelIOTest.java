@@ -1,10 +1,10 @@
 import SAE.exception.FileFormatException;
 import SAE.module.*;
-
 import static SAE.module.GameRepresentation.*;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.*;
+import org.junit.jupiter.api.Test;
 
 public class LevelIOTest {
 
@@ -16,11 +16,11 @@ public class LevelIOTest {
             Level level = LevelIO.readLevel(inputStream);
 
             // Vérification que le niveau est non nul
-            assertNotNull("Level should not be null", level);
+            assertNotNull(level,"Level should not be null");
 
             // Vérification des caractéristiques du niveau
-            assertEquals("Incorrect number of columns", 9, level.getNbColumns());
-            assertEquals("Incorrect number of lines", 7, level.getNbLines());
+            assertEquals( 9, level.getNbColumns(), "Incorrect number of columns");
+            assertEquals( 7, level.getNbLines(), "Incorrect number of lines");
 
             // Vérification de la représentation du niveau
             GameRepresentation[][] expectedField = {
