@@ -18,7 +18,7 @@ public class Game {
             Level level = LevelIO.readLevel(inputStream);
             while (!level.over()) {
                 view.levelToGridStr(level);
-                System.out.println("Entrez une direction (RIGHT, LEFT, TOP, BOTTOM) :");
+                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) :");
 
                 // Attendre que l'utilisateur entre une direction
                 String input = scanner.nextLine();
