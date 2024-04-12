@@ -3,7 +3,7 @@ package SAE.module;
 public class Point {
 
 
-    final int col;
+     final int col;
      final int lig;
 
 
