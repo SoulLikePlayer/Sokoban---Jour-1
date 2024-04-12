@@ -5,6 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CrateTest {
+<<<<<<< HEAD
+=======
+    Crate crate1 = new Crate(5, 6);
+    @Test
+
+>>>>>>> b27dd7dac6aa147c22c0e599ea3f1e2b37ba605d
 
     @Test
     public void testCrate() {
