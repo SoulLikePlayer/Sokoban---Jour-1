@@ -1,5 +1,6 @@
 import SAE.module.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
@@ -13,11 +14,9 @@ public class LevelTest {
         Player p = new Player(2 , 2,false);
 
         ArrayList<Crate> crates = new ArrayList<Crate>();
-        Crate c = new Crate( 4 , 4);
+        Crate c = new Crate( 3 , 3);
         crates.add(c);
 
-        ArrayList<Point> originCartes = new ArrayList<Point>();
-        originCartes.add(new Point(4,4));
 
         ArrayList<Goal> goals = new ArrayList<Goal>();
         goals.add(new Goal(new Point(6,6)));
@@ -32,7 +31,12 @@ public class LevelTest {
                 {EMPTY, EMPTY, EMPTY, WALL,WALL, EMPTY,EMPTY,EMPTY,EMPTY}
         };
 
-        Level l = new Level(p,new Point(2,2),crates,originCartes,goals,expectedField);
+        Level l = new Level(p,crates,goals,expectedField);
+
+        assertEquals(l.getNbColumns(), 9);
+        assertEquals(l.getNbLines(),7);
+        assertEquals(l.getRepr(2,2), PLAYER);
+        assertEquals(l.getRepr(2,6), CRATE);
 
 
     }

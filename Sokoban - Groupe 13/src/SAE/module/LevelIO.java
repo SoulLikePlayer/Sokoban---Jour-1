@@ -51,7 +51,7 @@ public abstract class LevelIO {
                 throw new FileFormatException("Player not found in the level");
             }
 
-            return new Level(player, playerOrigin, crates, crateOrigins, goals, field);
+            return new Level(player, crates, goals, field);
         } catch (IOException | NumberFormatException e) {
             throw new FileFormatException("Error reading level file: " + e.getMessage());
         }
