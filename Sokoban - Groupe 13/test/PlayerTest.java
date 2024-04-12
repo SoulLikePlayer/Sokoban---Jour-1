@@ -5,15 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> 23f3596070081ea505040c7feb6c438d8889c5e9
 public class PlayerTest {
 
     @Test
