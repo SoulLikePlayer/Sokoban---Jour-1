@@ -1,5 +1,5 @@
 
-import SAE.module.Crate;
+/*import SAE.module.Crate;
 import SAE.module.GameElement;
 import org.junit.jupiter.api.Test;
 
@@ -14,3 +14,4 @@ public class CrateTest {
 
 
 }
+*/

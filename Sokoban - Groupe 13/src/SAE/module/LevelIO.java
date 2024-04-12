@@ -2,48 +2,76 @@ package SAE.module;
 
 import SAE.exception.FileFormatException;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class LevelIO {
-    public Level readLevel(InputStream input) throws FileFormatException {
+    public static Level readLevel(InputStream input) throws FileFormatException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
-            // Lire le nombre de colonnes et de lignes du niveau depuis le fichier
-            int columns = Integer.parseInt(reader.readLine());
-            int rows = Integer.parseInt(reader.readLine());
+            int nbColumns = Integer.parseInt(reader.readLine());
+            int nbLines = Integer.parseInt(reader.readLine());
 
-            // Lire le dessin du niveau depuis le fichier et le stocker dans un tableau
-            GameRepresentation[][] field = new GameRepresentation[rows][columns];
-            for (int i = 0; i < rows; i++) {
+            GameRepresentation[][] field = new GameRepresentation[nbLines][nbColumns];
+
+            List<Crate> crates = new ArrayList<>();
+            List<Point> crateOrigins = new ArrayList<>();
+            List<Goal> goals = new ArrayList<>();
+            Player player = null;
+            Point playerOrigin = null;
+
+            for (int i = 0; i < nbLines; i++) {
                 String line = reader.readLine();
-                if (line == null || line.length() != columns) {
-                    throw new FileFormatException("Invalid level format.");
+                if (line == null) {
+                    throw new FileFormatException("Unexpected end of file");
                 }
-                for (int j = 0; j < columns; j++) {
-                    field[i][j] = GameRepresentation.valueOf(String.valueOf(line.charAt(j)));
+                if (line.length() != nbColumns) {
+                    throw new FileFormatException("Invalid number of characters in line " + (i + 3));
+                }
+                for (int j = 0; j < nbColumns; j++) {
+                    char c = line.charAt(j);
+                    GameRepresentation representation = GameRepresentation.fromCharachter(c);
+                    field[i][j] = representation;
+                    switch (representation) {
+                        case PLAYER:
+                            player = new Player(j, i);
+                            playerOrigin = new Point(j, i);
+                            break;
+                        case CRATE:
+                            crates.add(new Crate(j, i));
+                            crateOrigins.add(new Point(j, i));
+                            break;
+                        case GOAL:
+                            goals.add(new Goal(j, i));
+                            break;
+                    }
                 }
             }
 
-            // Retourner un nouvel objet Level avec les données lues depuis le fichier
-            return new Level(field);
-        } catch (IOException | IllegalArgumentException | NullPointerException e) {
-            throw new FileFormatException("Error reading level file.", e);
+            if (player == null || playerOrigin == null) {
+                throw new FileFormatException("Player not found in the level");
+            }
+
+            return new Level(player, playerOrigin, crates, crateOrigins, goals, field);
+        } catch (IOException | NumberFormatException e) {
+            throw new FileFormatException("Error reading level file: " + e.getMessage());
         }
     }
 
-    public void saveLevel(Level level, File fileName) throws IOException {
+    public static void saveLevel(Level level, File fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            // Écrire le nombre de colonnes et de lignes du niveau dans le fichier
-            writer.write(String.valueOf(level.getNbColumns()));
+            writer.write(Integer.toString(level.getNbColumns()));
             writer.newLine();
-            writer.write(String.valueOf(level.getNbLines()));
+            writer.write(Integer.toString(level.getNbLines()));
             writer.newLine();
 
-            // Écrire le dessin du niveau dans le fichier
             for (int i = 0; i < level.getNbLines(); i++) {
                 for (int j = 0; j < level.getNbColumns(); j++) {
-                    writer.write(level.getRepr(i, j).toString());
+                    writer.write((level.getRepr(i, j)).character);
                 }
                 writer.newLine();
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Error saving level to file: " + e.getMessage());
         }
     }
 }
