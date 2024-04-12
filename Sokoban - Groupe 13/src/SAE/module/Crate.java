@@ -9,13 +9,17 @@ public class Crate extends Movable {
 	}
 
 	@Override
-	public void moveTo(int col, int lig) {
 
-		position = new Point(col, lig);
+	public void moveTo(int col, int lig) throws IllegalAccessException {
+		if (getImmutable() == true) {
+			throw new IllegalAccessException("La caisse ne peut pas être bougée");
+		} else {
+			position = new Point(col, lig);
+		}
 	}
 
 	@Override
-	public void moveTo(Point p) {
+	public void moveTo(Point p){
 		position = p ;
 	}
 

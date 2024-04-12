@@ -27,7 +27,7 @@ public abstract class Movable extends GameElement {
     }
 
 
-    public abstract void moveTo(int col , int lig);
+    public abstract void moveTo(int col , int lig) throws IllegalAccessException;
 
 
     public abstract void moveTo(Point p);

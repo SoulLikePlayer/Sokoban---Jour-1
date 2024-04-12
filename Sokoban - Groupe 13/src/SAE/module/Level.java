@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Collection;
 
+import static SAE.module.GameRepresentation.WALL;
+
 /**
  * The class Level enables the game to run properly
  */
@@ -24,10 +26,10 @@ public class Level {
         this.playerOrigin = player.position;
         this.crates = new ArrayList<>(crates);
         this.crateOrigins = new ArrayList<>();
-        for (int i = 0 ; i < field.length ; i++){
-            for (int j = 0 ; j <field[0].length; j++){
-                if (field[i][j]==GameRepresentation.CRATE){
-                    crateOrigins.add(new Point(i,j));
+        for (int i = 0 ; i < field.length ; i++) {
+            for (int j = 0; j < field[0].length; j++) {
+                if (field[i][j] == GameRepresentation.CRATE) {
+                    crateOrigins.add(new Point(i, j));
                 }
             }
         }
@@ -36,6 +38,10 @@ public class Level {
         this.field = field;
         this.nbLines = field.length;
         this.nbColumns = field[0].length;
+        field[player.getLig()][player.getCol()] = GameRepresentation.PLAYER ;
+        for(Crate crate : crates){
+            field[crate.getLig()][crate.getCol()] = GameRepresentation.CRATE ;
+        }
     }
 
     /**
@@ -43,7 +49,7 @@ public class Level {
      * @param dir The direction of the movement
      * The method move the person towards the direction wanted
      */
-    public void move(Direction dir) {
+    public void move(Direction dir) throws IllegalAccessException {
         int newCol = player.getCol();
         int newRow = player.getLig();
 
@@ -65,22 +71,33 @@ public class Level {
         /**
          * Check if the move is legal
          */
-        if (isValidMove(newCol, newRow)) {
 
+        if (isValidMove(newCol, newRow)) {
+            boolean bouge = true ;
             /**
              * Check if there's a box placed on the new position of the person, if this is the case, the box is moved
              */
 
             for (Crate crate : crates) {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
+                    bouge = false ;
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE ) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow + (crate.getLig() + (newRow - player.getLig()) )][crateNewCol + (crate.getCol() + (newCol - player.getCol()))] != GameRepresentation.CRATE ) {
+                        field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY ;
                         crate.moveTo(crateNewCol, crateNewRow);
+                        field[crateNewCol][ crateNewRow]= GameRepresentation.CRATE ;
+                        field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
                         player.moveTo(newCol, newRow);
+                        field[newCol][newRow] = GameRepresentation.PLAYER ;
                     }
                     break; // Only a single crate can be moved at once
                 }
+            }
+            if(bouge = true){
+                field[player.getLig()][player.getCol()]=GameRepresentation.EMPTY;
+                player.moveTo(newCol, newRow);
+                field[newCol][newRow] = GameRepresentation.PLAYER ;
             }
         }
     }
@@ -92,8 +109,13 @@ public class Level {
      * @param row The row/line where the person will be moved
      * @return The method returns 'true' if the move is legal, 'false' if not
      */
+<<<<<<< HEAD
     public boolean isValidMove(int col, int row) {
         return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL ;
+=======
+    private boolean isValidMove(int col, int row) {
+        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != WALL ;
+>>>>>>> refs/remotes/origin/master
     }
 
     /**
@@ -157,7 +179,8 @@ public class Level {
 
     // Return a non-modifiable list of the crates
     public List<Crate> getCrates() {
-        return Collections.unmodifiableList(crates);
+        List list = Collections.unmodifiableList(crates);
+        return list;
     }
 
     /**
@@ -185,6 +208,7 @@ public class Level {
      * @return Return if the case specified is already taken by a player
      */
     private boolean playerCanAccess(int col, int row) {
+
         return player.getCol() == col && player.getLig() == row;
     }
 

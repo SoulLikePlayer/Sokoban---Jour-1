@@ -1,3 +1,6 @@
+
+import org.junit.jupiter.api.Test;
+
 import SAE.module.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,6 +9,7 @@ import java.util.ArrayList;
 
 import static SAE.module.GameRepresentation.*;
 import static SAE.module.GameRepresentation.EMPTY;
+
 
 public class LevelTest {
 
@@ -68,17 +72,36 @@ public class LevelTest {
         assertEquals(l.isValidMove(0,3),false);
 
     }
+    @Test
+    public void TestMove(){
+        GameRepresentation[][] expectedField = {
+                {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL},
+                {WALL,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,WALL},
+                {WALL,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,CRATE,EMPTY,WALL},
+                {WALL,EMPTY,EMPTY,EMPTY,PLAYER,EMPTY,EMPTY,EMPTY,WALL},
+                {WALL,EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL},
+                {WALL,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,WALL},
+                {WALL, WALL, WALL, WALL,WALL, WALL,WALL,WALL,WALL}
+        };
 
+<<<<<<< HEAD
     @Test
     public void Constructor2(){
         Player p = new Player(1 , 3,false);
 
         ArrayList<Crate> crates = new ArrayList<Crate>();
         Crate c = new Crate( 3 , 4);
+=======
+        Player p = new Player(2 , 2,false);
+
+        ArrayList<Crate> crates = new ArrayList<Crate>();
+        Crate c = new Crate( 3 , 3);
+>>>>>>> refs/remotes/origin/master
         crates.add(c);
 
 
         ArrayList<Goal> goals = new ArrayList<Goal>();
+<<<<<<< HEAD
         goals.add(new Goal(new Point(0,3)));
 
         GameRepresentation[][] expectedField = {
@@ -104,4 +127,10 @@ public class LevelTest {
 
 
 
+=======
+        goals.add(new Goal(new Point(6,6)));
+
+        
+    }
+>>>>>>> refs/remotes/origin/master
 }
