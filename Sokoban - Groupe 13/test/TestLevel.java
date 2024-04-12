@@ -1,6 +1,7 @@
 import SAE.module.*;
-import org.junit.Before;
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 public class TestLevel {
     private Level level;
 
-    @Before
+    @Test
     public void setUp() {
         // Création d'un niveau de test avec un joueur, des caisses, des objectifs et un terrain
         Player player = new Player(1, 1);
