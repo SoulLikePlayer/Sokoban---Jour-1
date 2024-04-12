@@ -6,6 +6,10 @@ import SAE.view.*;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Start a new game from the prompt wrote by the user
+ * Play the game until the win
+ */
 public class Game {
     public void run() {
 
