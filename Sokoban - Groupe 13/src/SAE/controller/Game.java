@@ -22,7 +22,7 @@ public class Game {
             Level level = LevelIO.readLevel(inputStream);
             while (!level.over()) {
                 view.levelToGridStr(level);
-                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) ou une commande (RESET, RESTART):");
+                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) :");
 
                 // Attendre que l'utilisateur entre une direction
                 String input = scanner.nextLine();
@@ -65,6 +65,8 @@ public class Game {
                     restart = false;
                 }
             }
+            view.levelToGridStr(level);
+            System.out.println("Bravo ! vous avez réussi !");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (FileFormatException e) {
