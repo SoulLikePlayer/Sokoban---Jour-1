@@ -25,8 +25,12 @@ public abstract class Movable extends GameElement {
 
     public abstract void moveTo(Point p);
 
-    public void setImmutable(boolean imu){
-        this.immutable = imu;
+    public boolean getImmutable(){
+        return immutable;
+    }
+
+    public void setImmutable(boolean immutable) {
+        this.immutable = immutable;
     }
 }
 

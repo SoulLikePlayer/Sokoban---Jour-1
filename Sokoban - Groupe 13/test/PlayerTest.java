@@ -1,12 +1,12 @@
 import SAE.module.Player;
 import SAE.module.Point;
-import SAE.module.*;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
-/*public class PlayerTest {
+
+public class PlayerTest {
 
     @Test
     public void Constructor(){
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
         assertEquals(p1.getCol() , 1);
         assertEquals(p1.getLig(), 2);
         assertFalse(p1.getLig()==7);
-        assertEquals(p1.getImmutable, false);
+        assertEquals(p1.getImmutable(), false);
 
 
         Point pt = new Point(1,2);
@@ -28,8 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
         assertEquals(p2.getCol() , 1);
         assertEquals(p2.getLig(), 2);
         assertFalse(p2.getLig()==7);
-        assertEquals(p1.getImmutable, false);
+        assertEquals(p1.getImmutable(), false);
 
     }
-    }
-}*/
+
+}

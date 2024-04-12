@@ -7,7 +7,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws FileFormatException, FileNotFoundException {
         // Chemin du fichier contenant le niveau
-        String filePath = "ENTREZ CHEMIN";
+        String filePath = "C:\\Users\\Louis\\Desktop\\SAE2.03\\sae-2-03-final\\Sokoban - Groupe 13\\levels\\levels\\niveau01.xsb";
 
         // Lecture du niveau depuis le fichier
         try (InputStream inputStream = new FileInputStream(filePath)) {
@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Level read from file:");
             for (int row = 0; row < level.getNbLines(); row++) {
                 for (int col = 0; col < level.getNbColumns(); col++) {
-                    System.out.print(level.getRepr(row, col).character);
+                    System.out.print(level.getRepr(row, col));
                 }
                 System.out.println();
             }

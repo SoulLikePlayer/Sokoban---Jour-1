@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*class PointTest {
+class PointTest {
 
     @Test
     public void constructorTest(){
@@ -12,4 +12,4 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(p , new Point(4 , 5));
 
     }
-}*/
+}
