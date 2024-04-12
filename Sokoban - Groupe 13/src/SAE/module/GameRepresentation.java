@@ -4,12 +4,14 @@ public enum GameRepresentation {
 
     PLAYER('@'),
     WALL('#'),
-    TARGET('.'),
-    BOX('$'),
-    PLAYER_ON_TARGET('+'),
-    BOX_ON_TARGET('*'),
+    GOAL('.'),
+    CRATE('$'),
+    PLAYER_ON_GOAL('+'),
+    CRATE_ON_GOAL('*'),
     EMPTY(' '),
-    EMPTY_EXTERIOR('X');
+    MAZE_OUTSIDE('X');
+
+    private final char character;
 
     GameRepresentation(char character){
         this.character = character;

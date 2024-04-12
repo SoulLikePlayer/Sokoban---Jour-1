@@ -1,8 +1,11 @@
 package SAE.module;
 
 public class Point {
-    final int col;
-    final int lig;
+
+
+        final int col;
+     final int lig;
+
 
     public Point(int col, int lig) {
         this.col = col;
