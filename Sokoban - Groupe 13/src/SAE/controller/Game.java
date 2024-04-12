@@ -22,11 +22,13 @@ public class Game {
             Level level = LevelIO.readLevel(inputStream);
             while (!level.over()) {
                 view.levelToGridStr(level);
-                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) :");
+                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) ou une commande (RESET, RESTART):");
 
                 // Attendre que l'utilisateur entre une direction
                 String input = scanner.nextLine();
                 Direction direction = null;
+                boolean restart = false;
+                boolean reset = false;
                 switch (input.toUpperCase()) {
                     case "RIGHT":
                         direction = Direction.RIGHT;
@@ -40,6 +42,12 @@ public class Game {
                     case "DOWN":
                         direction = Direction.DOWN;
                         break;
+                    case "RESTART" :
+                        direction = null;
+                        restart = true;
+                    case "RESET" :
+                        direction = null;
+                        reset = true;
                     default:
                         System.out.println("Direction invalide. Utilisez RIGHT, LEFT, UP ou DOWN.");
                 }
@@ -47,6 +55,14 @@ public class Game {
                 // Si une direction valide a été entrée, effectuer le mouvement
                 if (direction != null) {
                     level.move(direction);
+                }
+                if (reset == true){
+                    level.resetTurn();
+                    reset = false;
+                }
+                if (restart == true){
+                    level.reset();
+                    restart = false;
                 }
             }
         } catch (IOException e) {

@@ -1,4 +1,4 @@
-package SAE.module;
+package SAE;
 
 import SAE.exception.FileFormatException;
 import SAE.view.View;
