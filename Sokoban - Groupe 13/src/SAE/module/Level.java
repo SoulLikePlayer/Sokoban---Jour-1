@@ -50,15 +50,15 @@ public class Level {
 
         // Vérifie si le déplacement est valide
         if (isValidMove(newCol, newRow)) {
-            player.moveTo(newCol, newRow);
 
             // Vérifie s'il y a une caisse à la nouvelle position et la déplace si nécessaire
             for (Crate crate : crates) {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
                     int crateNewRow = crate.getLig() + (newRow - player.getLig());
-                    if (isValidMove(crateNewCol, crateNewRow)) {
+                    if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
                         crate.moveTo(crateNewCol, crateNewRow);
+                        player.moveTo(newCol, newRow);
                     }
                     break; // On suppose qu'une seule caisse peut être poussée à la fois
                 }
@@ -68,7 +68,7 @@ public class Level {
 
     // Vérifie si un déplacement aux coordonnées spécifiées est valide
     private boolean isValidMove(int col, int row) {
-        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL;
+        return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL ;
     }
 
     // Réinitialise la position du joueur et des caisses
