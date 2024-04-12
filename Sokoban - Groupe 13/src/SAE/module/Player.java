@@ -2,8 +2,16 @@ package SAE.module;
 
 import SAE.module.Movable;
 
+/**
+ * This class manage everything related to the player movements
+ */
 public class Player extends Movable {
 
+	/**
+	 *
+	 * @param col The goal column
+	 * @param lig The goal line
+	 */
 	@Override
 	public void moveTo(int col, int lig) {
 

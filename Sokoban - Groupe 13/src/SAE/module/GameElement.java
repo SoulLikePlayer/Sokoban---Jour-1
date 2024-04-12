@@ -2,6 +2,9 @@ package SAE.module;
 
 import java.util.Objects;
 
+/**
+ * The abstract class GameElement allows to gather the coordinates
+ */
 public abstract class GameElement {
     protected Point position;
 

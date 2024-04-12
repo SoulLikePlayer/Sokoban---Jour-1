@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Collection;
 
-
+/**
+ * The class Level enables the game to run properly
+ */
 public class Level {
 
     private final GameRepresentation[][] field;
@@ -28,7 +30,11 @@ public class Level {
         this.nbColumns = field[0].length;
     }
 
-    // Méthode pour déplacer le joueur et éventuellement une caisse dans la direction donnée
+    /**
+     *
+     * @param dir The direction of the movement
+     * The method move the person towards the direction wanted
+     */
     public void move(Direction dir) {
         int newCol = player.getCol();
         int newRow = player.getLig();
@@ -48,10 +54,15 @@ public class Level {
                 break;
         }
 
-        // Vérifie si le déplacement est valide
+        /**
+         * Check if the move is legal
+         */
         if (isValidMove(newCol, newRow)) {
 
-            // Vérifie s'il y a une caisse à la nouvelle position et la déplace si nécessaire
+            /**
+             * Check if there's a box placed on the new position of the person, if this is the case, the box is moved
+             */
+
             for (Crate crate : crates) {
                 if (crate.getCol() == newCol && crate.getLig() == newRow) {
                     int crateNewCol = crate.getCol() + (newCol - player.getCol());
@@ -60,28 +71,36 @@ public class Level {
                         crate.moveTo(crateNewCol, crateNewRow);
                         player.moveTo(newCol, newRow);
                     }
-                    break; // On suppose qu'une seule caisse peut être poussée à la fois
+                    break; // Only a single box can be moved at once
                 }
             }
         }
     }
 
-    // Vérifie si un déplacement aux coordonnées spécifiées est valide
+
+    /**
+     *
+     * @param col The column where the person will be moved
+     * @param row The row/line where the person will be moved
+     * @return The method returns 'true' if the move is legal, 'false' if not
+     */
     private boolean isValidMove(int col, int row) {
         return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != GameRepresentation.WALL ;
     }
 
-    // Réinitialise la position du joueur et des caisses
+    /**
+     * Clear the position of the person and the boxes
+     */
     public void reset() {
-        player.moveTo(playerOrigin); // Réinitialise la position du joueur à son origine
+        player.moveTo(playerOrigin); // Move the person at his original position
 
-        // Réinitialise la position de chaque crate à son origine
+        // Move every crate at their original positions
         for (int i = 0; i < crates.size(); i++) {
             crates.get(i).moveTo(crateOrigins.get(i));
         }
     }
 
-    // Transforme les cases EMPTY non accessibles en MAZE_OUTSIDE
+    // Tranform EMPTY non-accesible cases to MAZE_OUTSIDE cases
     public void changeEmptyToOutside() {
         for (int row = 0; row < nbLines; row++) {
             for (int col = 0; col < nbColumns; col++) {
@@ -92,7 +111,7 @@ public class Level {
         }
     }
 
-    // Vérifie si toutes les caisses sont sur des objectifs
+    // Check if all of the crates are on their final positions
     public boolean over() {
         for (Crate crate : crates) {
             boolean crateOnGoal = false;
@@ -109,42 +128,65 @@ public class Level {
         return true;
     }
 
-    // Renvoie la GameRepresentation aux coordonnées spécifiées
+    /**
+     *
+     * @param row The row that will be check
+     * @param col The column that will be check
+     * @return The method return the representation of the case
+     */
     public GameRepresentation getRepr(int row, int col) {
         return field[row][col];
     }
 
-    // Renvoie le nombre de colonnes du niveau
+    // Return the number of columns of the level
     public int getNbColumns() {
         return nbColumns;
     }
 
-    // Renvoie le nombre de lignes du niveau
+    // Return the number of lines of the level
     public int getNbLines() {
         return nbLines;
     }
 
-    // Renvoie une liste non modifiable des caisses
+    // Return a non-modifiable list of the crates
     public List<Crate> getCrates() {
         return Collections.unmodifiableList(crates);
     }
 
-    // Renvoie une liste non modifiable des objectifs
+    /**
+     * Return a non-modifiable list of the goals
+     */
+
     public List<Goal> getGoals() {
         return Collections.unmodifiableList(goals);
     }
 
-    // Vérifie si une case aux coordonnées spécifiées est accessible par le joueur ou une caisse
+
+    /**
+     * @param col The number of the column that will be check
+     * @param row The number of the line that will be check
+     * @return Check if a case is accessible for a player or a crate on the specified coordinates
+     */
     private boolean isAccessible(int col, int row) {
         return playerCanAccess(col, row) || crateCanAccess(col, row);
     }
 
-    // Vérifie si une case aux coordonnées spécifiées est occupée par le joueur
+    /**
+     *
+     * @param col
+     * @param row
+     * @return Return if the case specified is already taken by a player
+     */
     private boolean playerCanAccess(int col, int row) {
         return player.getCol() == col && player.getLig() == row;
     }
 
-    // Vérifie si une case aux coordonnées spécifiées est occupée par une caisse
+    /**
+     *
+     * @param col
+     * @param row
+     * @return Return if the case specified is already taken by a player
+     */
     private boolean crateCanAccess(int col, int row)
 
     {
