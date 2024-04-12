@@ -84,7 +84,7 @@ public class Level {
                         player.moveTo(newCol, newRow);
                         field[newRow][newCol] = GameRepresentation.PLAYER;
                     }
-                    break; // Only a single box can be moved at once
+                    break; // Only a single crate can be moved at once
                 }
             }
             if (bouge) {
@@ -106,6 +106,7 @@ public class Level {
      */
     private boolean isValidMove(int col, int row) {
         return col >= 0 && col < nbColumns && row >= 0 && row < nbLines && field[row][col] != WALL ;
+
     }
 
     /**
