@@ -6,9 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * This class enables the game to read a file.
+ * The first line of the file is the number of columns
+ * The second line of the file represents the number of lines of level
+ * Everything else represents the pattern of the level
  */
 public abstract class LevelIO {
+
+    /**
+     *
+     * @param input
+     * @return The method return the game data(player, crates, goals, field)
+     * @throws FileFormatException An exception is thrown if an error happened during the file read
+     */
     public static Level readLevel(InputStream input) throws FileFormatException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
             int nbColumns = Integer.parseInt(reader.readLine());
@@ -62,7 +72,7 @@ public abstract class LevelIO {
 
     /**
      *
-     * @param level
+     * @param level The level choose
      * @param fileName The name of the file where the data will be saved
      */
     public static void saveLevel(Level level, File fileName) {
