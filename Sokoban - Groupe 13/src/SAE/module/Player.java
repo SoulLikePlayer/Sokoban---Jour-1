@@ -3,7 +3,7 @@ package SAE.module;
 import SAE.module.Movable;
 
 /**
- * This class manage everything related to the player movements
+ * This class manages everything related to the player movements
  */
 public class Player extends Movable {
 

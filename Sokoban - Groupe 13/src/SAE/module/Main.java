@@ -6,14 +6,14 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws FileFormatException, FileNotFoundException {
-        // Chemin du fichier contenant le niveau
+        // Path of the file containing the level
         String filePath = "C:\\Users\\Louis\\Desktop\\SAE2.03\\sae-2-03-final\\Sokoban - Groupe 13\\levels\\levels\\niveau01.xsb";
 
-        // Lecture du niveau depuis le fichier
+        // Read of the level from the file
         try (InputStream inputStream = new FileInputStream(filePath)) {
             Level level = LevelIO.readLevel(inputStream);
 
-            // Affichage du niveau
+            // Display of the level
             System.out.println("Level read from file:");
             for (int row = 0; row < level.getNbLines(); row++) {
                 for (int col = 0; col < level.getNbColumns(); col++) {
@@ -22,7 +22,7 @@ public class Main {
                 System.out.println();
             }
 
-            // Sauvegarde du niveau dans un nouveau fichier
+            // Save of the level in a new file
             LevelIO.saveLevel(level, new File("new_level.txt"));
             System.out.println("Level saved to new file: new_level.txt");
         } catch (FileNotFoundException e) {

@@ -1,5 +1,8 @@
 package SAE.module;
 
+/**
+ * This class manages everything related to the player movements
+ */
 public class Crate extends Movable {
 	public Crate(int col, int lig) {
 		super(col,lig);

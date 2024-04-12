@@ -5,6 +5,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public abstract class LevelIO {
     public static Level readLevel(InputStream input) throws FileFormatException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
@@ -57,6 +60,11 @@ public abstract class LevelIO {
         }
     }
 
+    /**
+     *
+     * @param level
+     * @param fileName The name of the file where the data will be saved
+     */
     public static void saveLevel(Level level, File fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(Integer.toString(level.getNbColumns()));
