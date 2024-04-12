@@ -6,17 +6,23 @@ import SAE.view.*;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Start a new game from the prompt wrote by the user
+ * Play the game until the win
+ */
 public class Game {
     public void run() {
-        String filePath = "C:\\Users\\Louis\\Desktop\\SAE2.03\\sae-2-03-final\\Sokoban - Groupe 13\\levels\\levels\\niveau01.xsb";
+
         View view = new View();
+        System.out.printf("rentrez le nom de votre fichier : ");
         Scanner scanner = new Scanner(System.in);
+        String filePath = scanner.next();
         // Read of the level from the file
-        try (InputStream inputStream = new FileInputStream(filePath)) {
+        try (InputStream inputStream = new FileInputStream("Sokoban - Groupe 13/resources/levels/"+filePath)) {
             Level level = LevelIO.readLevel(inputStream);
             while (!level.over()) {
                 view.levelToGridStr(level);
-                System.out.println("Entrez une direction (RIGHT, LEFT, TOP, BOTTOM) :");
+                System.out.println("Entrez une direction (RIGHT, LEFT, UP, DOWN) :");
 
                 // Attendre que l'utilisateur entre une direction
                 String input = scanner.nextLine();

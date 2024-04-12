@@ -26,8 +26,8 @@ public class Level {
         this.playerOrigin = player.position;
         this.crates = new ArrayList<>(crates);
         this.crateOrigins = new ArrayList<>();
-        for (int i = 0 ; i < field.length ; i++) {
-            for (int j = 0; j < field[0].length; j++) {
+        for (int i = 0 ; i < field.length - 1 ; i++) {
+            for (int j = 0; j < field[0].length - 1; j++) {
                 if (field[i][j] == GameRepresentation.CRATE) {
                     crateOrigins.add(new Point(i, j));
                 }
@@ -41,6 +41,9 @@ public class Level {
         field[player.getLig()][player.getCol()] = GameRepresentation.PLAYER ;
         for(Crate crate : crates){
             field[crate.getLig()][crate.getCol()] = GameRepresentation.CRATE ;
+        }
+        for(Goal goal : goals){
+            field[goal.getLig()][goal.getCol()] = GameRepresentation.GOAL;
         }
     }
 
@@ -83,12 +86,25 @@ public class Level {
                     // Vérifie si la nouvelle position de la caisse est valide et libre
                     if (isValidMove(crateNewCol, crateNewRow) && field[crateNewRow][crateNewCol] != GameRepresentation.CRATE) {
                         // Déplace la caisse et le joueur
-                        field[crate.getLig()][crate.getCol()] = GameRepresentation.EMPTY;
                         crate.moveTo(crateNewCol, crateNewRow);
-                        field[crateNewRow][crateNewCol] = GameRepresentation.CRATE;
-                        field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
+                        if (field[crateNewRow][crateNewCol] == GameRepresentation.GOAL){
+                            field[crateNewRow][crateNewCol] = GameRepresentation.CRATE_ON_GOAL;
+                        }else{
+                            field[crateNewRow][crateNewCol] = GameRepresentation.CRATE;
+                        }
+                        if (field[player.getLig()][player.getCol()] == GameRepresentation.CRATE_ON_GOAL){
+                            field[player.getLig()][player.getCol()] = GameRepresentation.GOAL;
+                        }else{
+                            field[player.getLig()][player.getCol()] = GameRepresentation.EMPTY;
+                        }
+                        if (field[newRow][newCol] == GameRepresentation.CRATE_ON_GOAL) {
+                            // Modifie le GameElement de la case GOAL en PLAYER_ON_GOAL
+                            field[newRow][newCol] = GameRepresentation.PLAYER_ON_GOAL;
+                        } else {
+                            field[newRow][newCol] = GameRepresentation.PLAYER;
+                            // Restaure la case GOAL à sa valeur d'origine si elle a été modifiée en PLAYER_ON_GOAL
+                        }
                         player.moveTo(newCol, newRow);
-                        field[newRow][newCol] = GameRepresentation.PLAYER;
                     }
                     break; // Seule une seule caisse peut être déplacée à la fois
                 }

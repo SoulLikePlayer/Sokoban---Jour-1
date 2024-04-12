@@ -2,6 +2,9 @@ package SAE.module;
 
 import SAE.module.GameElement;
 
+/**
+ * Tells if a move is available, legal
+ */
 public abstract class Movable extends GameElement {
     private boolean immutable;
 
