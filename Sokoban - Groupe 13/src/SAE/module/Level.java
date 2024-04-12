@@ -24,10 +24,10 @@ public class Level {
         this.playerOrigin = player.position;
         this.crates = new ArrayList<>(crates);
         this.crateOrigins = new ArrayList<>();
-        for (int i = 0 ; i < field.length ; i++){
-            for (int j = 0 ; j <field[0].length; j++){
-                if (field[i][j]==GameRepresentation.CRATE){
-                    crateOrigins.add(new Point(i,j));
+        for (int i = 0 ; i < field.length ; i++) {
+            for (int j = 0; j < field[0].length; j++) {
+                if (field[i][j] == GameRepresentation.CRATE) {
+                    crateOrigins.add(new Point(i, j));
                 }
             }
         }
@@ -36,6 +36,10 @@ public class Level {
         this.field = field;
         this.nbLines = field.length;
         this.nbColumns = field[0].length;
+        field[player.getLig()][player.getCol()] = GameRepresentation.PLAYER ;
+        for(Crate crate : crates){
+            field[crate.getLig()][crate.getCol()] = GameRepresentation.CRATE ;
+        }
     }
 
     /**
