@@ -15,11 +15,7 @@ public class Point {
         this.lig = lig;
     }
 
-    /**
-     *
-     * @param obj
-     * @return Return the object if it is equal to
-     */
+  
 
     @Override
     public boolean equals(Object obj) {
