@@ -1,6 +1,6 @@
 public class Point {
-    private final int col;
-    private final int lig;
+        final int col;
+     final int lig;
 
     public Point(int col, int lig) {
         this.col = col;
@@ -21,4 +21,5 @@ public class Point {
         // Compare les attributs col et lig
         return col == other.col && lig == other.lig;
     }
+
 }
