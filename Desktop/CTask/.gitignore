@@ -1,0 +1,35 @@
+# Fichiers d'exécution générés
+*.exe
+*.out
+
+# Fichiers d'objets et fichiers temporaires
+*.o
+*.obj
+*.tmp
+*.log
+
+# Fichiers spécifiques aux éditeurs
+.vscode/
+.idea/
+*.sublime-*
+
+# Fichiers de compilation et de génération de documentation
+/build/
+/docs/
+
+# Fichiers de dépendances générés
+/dependencies/
+
+# Fichiers système et fichiers cachés
+.DS_Store
+Thumbs.db
+
+# Fichiers de configuration spécifiques à l'utilisateur
+/config.ini
+
+# Fichiers de sauvegarde
+*~
+
+# Dossiers spécifiques à l'environnement de développement
+/bin/
+/lib/
